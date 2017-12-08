@@ -63,9 +63,6 @@ spec:
         - mountPath: /etc/prometheus/rules
           name: rules
           readOnly: true
-        - mountPath: /etc/etcd/ssl
-          name: etc-etcd-ssl
-          readOnly: true
         - mountPath: /var/prometheus/data
           name: prometheus-k8s-db
           subPath: prometheus-db
@@ -100,10 +97,6 @@ spec:
           defaultMode: 420
           name: prometheus-k8s-rules
         name: rules
-      - name: etc-etcd-ssl
-        secret:
-          defaultMode: 420
-          secretName: etcd-client-ssl
   updateStrategy:
     type: RollingUpdate
   volumeClaimTemplates:
